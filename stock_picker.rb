@@ -10,8 +10,16 @@ end
 
 def get_prices(prices)
   #take an array of prices and add a user input string to it
+  #prompt user
   puts "Enter new price: ('!' to end)"
-  
+  #take in user input
+  new_price = gets.chomp
+  #check for end
+  return if new_price === "!"
+  #push new price to array
+  prices.push(new_price.to_i)
+  #call func again
+  get_prices(prices)
 end
 
 prices = []
