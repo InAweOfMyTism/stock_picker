@@ -10,7 +10,7 @@ def stock_picker(stock_prices_array)
     #first loop iterates over each day in the list
 
     #create an array of all remaining days
-    remaining_days = stock_prices_array.slice(current_day + 1, stock_prices_array.size - current_day)
+    remaining_days = stock_prices_array.slice(current_day, stock_prices_array.size - current_day)
     p remaining_days
 
     remaining_days.each_with_index do |future_price, future_day|
@@ -20,12 +20,13 @@ def stock_picker(stock_prices_array)
       #if potential is greater than current max profit, update values
       if potential_profit > profit 
         buy_day = current_day
-        sell_day = future_day
+        sell_day = future_day + current_day 
         profit = potential_profit
       end
+      
     end
   end
-
+  #return two days
   return [buy_day, sell_day]
 end
 
